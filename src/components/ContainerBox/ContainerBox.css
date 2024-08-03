@@ -3,7 +3,8 @@
   background: #f3f3fb;
   padding: 70px 44px;
   margin: 20px 30px;
-  height: calc(100vh - (140px + 40px));
+  height: calc(100vh - (100px + 40px));
+  box-sizing: border-box;
 }
 
 .container-box h1,

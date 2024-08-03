@@ -1,6 +1,9 @@
 import "./TaskCard.css";
 
 const TaskCard = (props) => {
+  //   let type1 = "t-1";
+  //   const status1 = "Todo";
+  //   const desc = "Textul cardului de la mijloc";
   return (
     <div className="taskContainer">
       <div className="top">
