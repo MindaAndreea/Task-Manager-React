@@ -4,7 +4,7 @@ import Button from "../Button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
-const CreateTaskForm = () => {
+const CreateTaskForm = (props) => {
   const [taskName, setTaskName] = useState("");
   const [taskDate, setTaskDate] = useState("");
   const [taskDesc, setTaskDesc] = useState("");
@@ -21,9 +21,22 @@ const CreateTaskForm = () => {
   };
   console.log(taskName, taskDate, taskDesc);
 
+  const newTask = {
+    name: taskName,
+    date: taskDate,
+    desc: taskDesc,
+  };
+
+  const resetState = () => {
+    setTaskName("");
+    setTaskDate("");
+    setTaskDesc("");
+  };
+
   const handleSubmitForm = (event) => {
-    console.log("Submit");
     event.preventDefault();
+    props.addTask(newTask);
+    resetState();
   };
 
   return (
@@ -36,17 +49,29 @@ const CreateTaskForm = () => {
       </div>
       <form onSubmit={handleSubmitForm}>
         <label htmlFor="taskName">Task Name</label>
-        <input type="text" id="taskName" onChange={handleTaskName} />
+        <input
+          type="text"
+          id="taskName"
+          onChange={handleTaskName}
+          value={taskName}
+        />
 
         <label htmlFor="taskDate">Due Date</label>
-        <input type="date" id="taskDate" onChange={handleTaskDate} />
+        <input
+          type="date"
+          id="taskDate"
+          onChange={handleTaskDate}
+          value={taskDate}
+        />
 
         <label htmlFor="taskDesc">Task Description</label>
         <textarea
           id="taskDesc"
           onChange={handleTaskDesc}
           placeholder="Type your content here...."
+          value={taskDesc}
         ></textarea>
+
         <Button textBtn="Create Task" />
       </form>
     </div>
