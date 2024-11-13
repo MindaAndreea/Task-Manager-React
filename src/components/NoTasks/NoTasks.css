@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap");
+
+.noTasksContainer {
+  text-align: center;
+  font-family: "Sen", sans-serif;
+  margin: 40px 10px;
+}
+
+.noTasksContainer img {
+  width: 160px;
+  height: 142px;
+}
+
+.noTasksContainer h2 {
+  font-size: 28px;
+  line-height: 34px;
+}
+
+.noTasksContainer p {
+  color: #6d6c6c;
+  line-height: 19.25px;
+}

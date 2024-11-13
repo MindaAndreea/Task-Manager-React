@@ -5,37 +5,36 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const CreateTaskForm = (props) => {
-  const [taskName, setTaskName] = useState("");
-  const [taskDate, setTaskDate] = useState("");
-  const [taskDesc, setTaskDesc] = useState("");
+  const [taskData, setTaskData] = useState({ name: "", date: "", desc: "" });
 
   const handleTaskName = (event) => {
-    setTaskName(event.target.value);
+    setTaskData((prevState) => ({
+      ...prevState,
+      name: event.target.value,
+    }));
   };
 
   const handleTaskDate = (event) => {
-    setTaskDate(event.target.value);
+    setTaskData((prevState) => ({
+      ...prevState,
+      date: event.target.value,
+    }));
   };
-  const handleTaskDesc = (event) => {
-    setTaskDesc(event.target.value);
-  };
-  console.log(taskName, taskDate, taskDesc);
 
-  const newTask = {
-    name: taskName,
-    date: taskDate,
-    desc: taskDesc,
+  const handleTaskDesc = (event) => {
+    setTaskData((prevState) => ({
+      ...prevState,
+      desc: event.target.value,
+    }));
   };
 
   const resetState = () => {
-    setTaskName("");
-    setTaskDate("");
-    setTaskDesc("");
+    setTaskData({ name: "", date: "", desc: "" });
   };
 
   const handleSubmitForm = (event) => {
     event.preventDefault();
-    props.addTask(newTask);
+    props.addTask(taskData);
     resetState();
   };
 
@@ -53,7 +52,7 @@ const CreateTaskForm = (props) => {
           type="text"
           id="taskName"
           onChange={handleTaskName}
-          value={taskName}
+          value={taskData.name}
         />
 
         <label htmlFor="taskDate">Due Date</label>
@@ -61,7 +60,7 @@ const CreateTaskForm = (props) => {
           type="date"
           id="taskDate"
           onChange={handleTaskDate}
-          value={taskDate}
+          value={taskData.date}
         />
 
         <label htmlFor="taskDesc">Task Description</label>
@@ -69,7 +68,7 @@ const CreateTaskForm = (props) => {
           id="taskDesc"
           onChange={handleTaskDesc}
           placeholder="Type your content here...."
-          value={taskDesc}
+          value={taskData.desc}
         ></textarea>
 
         <Button textBtn="Create Task" />

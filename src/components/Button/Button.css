@@ -1,5 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap");
+
 .primaryBtn {
   background-color: var(--main-color);
+
+  font-family: "Sen", sans-serif;
   color: white;
   font-size: 15px;
   border: none;
@@ -7,4 +11,6 @@
   padding: 19px 25px;
   max-width: 170px;
   cursor: pointer;
+  font-weight: 700;
+  text-align: center;
 }
