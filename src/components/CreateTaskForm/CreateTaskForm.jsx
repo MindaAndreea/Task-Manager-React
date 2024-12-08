@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import "./CreateTaskForm.css";
 import Button from "../Button/Button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const CreateTaskForm = (props) => {
   const [taskData, setTaskData] = useState({ name: "", date: "", desc: "" });
