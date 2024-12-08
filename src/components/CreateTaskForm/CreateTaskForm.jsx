@@ -5,6 +5,8 @@ import Button from "../Button/Button";
 const CreateTaskForm = (props) => {
   const [taskData, setTaskData] = useState({ name: "", date: "", desc: "" });
 
+  const [formErrors, setFormErrors] = useState({});
+
   const handleTaskName = (event) => {
     setTaskData((prevState) => ({
       ...prevState,
@@ -30,12 +32,41 @@ const CreateTaskForm = (props) => {
     setTaskData({ name: "", date: "", desc: "" });
   };
 
+  const validateForm = () => {
+    let errors = {};
+
+    if (!taskData.name) {
+      errors.nameError = "Task name is required!";
+    } else if (taskData.name.length < 3) {
+      errors.nameError = "Task name must have minimum 3 characters!";
+    }
+
+    if (!taskData.date) {
+      errors.dateError = "Task date is required!";
+    }
+
+    if (!taskData.desc) {
+      errors.descError = "Task description is required!";
+    }
+
+    setFormErrors({ ...errors });
+
+    let isValid = Object.keys(errors).length < 1;
+    return isValid;
+  };
+
   const handleSubmitForm = (event) => {
     event.preventDefault();
-    props.addTask(taskData);
-    resetState();
-    if (props.closeModal) {
-      props.closeModal();
+    let isValid = validateForm();
+
+    if (isValid) {
+      props.addTask(taskData);
+      resetState();
+      if (props.closeModal) {
+        props.closeModal();
+      }
+    } else {
+      console.log("Avem erori!");
     }
   };
 
@@ -51,7 +82,11 @@ const CreateTaskForm = (props) => {
           id="taskName"
           onChange={handleTaskName}
           value={taskData.name}
+          className={formErrors.nameError && "error-input"}
         />
+        {formErrors.nameError && (
+          <span className="error-msg">{formErrors.nameError}</span>
+        )}
 
         <label htmlFor="taskDate">Due Date</label>
         <input
@@ -59,7 +94,11 @@ const CreateTaskForm = (props) => {
           id="taskDate"
           onChange={handleTaskDate}
           value={taskData.date}
+          className={formErrors.dateError && "error-input"}
         />
+        {formErrors.dateError && (
+          <span className="error-msg">{formErrors.dateError}</span>
+        )}
 
         <label htmlFor="taskDesc">Task Description</label>
         <textarea
@@ -67,7 +106,11 @@ const CreateTaskForm = (props) => {
           onChange={handleTaskDesc}
           placeholder="Type your content here...."
           value={taskData.desc}
+          className={formErrors.descError && "error-input"}
         ></textarea>
+        {formErrors.descError && (
+          <span className="error-msg">{formErrors.descError}</span>
+        )}
 
         <Button textBtn="Create Task" />
       </form>

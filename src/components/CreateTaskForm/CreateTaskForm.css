@@ -34,3 +34,20 @@
   resize: none;
   height: 120px;
 }
+
+.createTaskForm .error-msg,
+.error-input {
+  color: red;
+}
+
+.createTaskForm .error-msg {
+  background-color: rgba(128, 128, 128, 0.536);
+  margin-bottom: 10px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.createTaskForm .error-input {
+  border: 1px solid red;
+  outline: none;
+}

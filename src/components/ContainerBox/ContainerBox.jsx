@@ -65,7 +65,7 @@ const ContainerBox = () => {
     ]);
   };
 
-  console.log(taskList);
+  // console.log(taskList);
 
   return (
     <div className="container-box">
