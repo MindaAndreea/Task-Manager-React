@@ -3,9 +3,16 @@ import CreateTaskForm from "../CreateTaskForm/CreateTaskForm";
 import TaskCard from "../TaskCard/TaskCard";
 import "./ContainerBox.css";
 import NoTasks from "../NoTasks/NoTasks";
+import Modal from "../Modal/Modal";
+import ControlPanel from "../ControlPanel/ControlPanel";
 
 const ContainerBox = () => {
   const [taskList, setTaskList] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+
+  const closeModal = () => setIsModalOpen(false);
 
   const onAddTask = (task) => {
     setTaskList([
@@ -23,8 +30,7 @@ const ContainerBox = () => {
 
   return (
     <div className="container-box">
-      <h1>Tasks</h1>
-      <h4>Your tasks in your space.</h4>
+      <ControlPanel onClickFunction={openModal} />
       {taskList.length > 0 ? (
         <div className="tasks">
           {taskList.map((task, index) => (
@@ -40,7 +46,9 @@ const ContainerBox = () => {
       ) : (
         <NoTasks />
       )}
-      <CreateTaskForm addTask={onAddTask} />
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <CreateTaskForm addTask={onAddTask} closeModal={closeModal} />
+      </Modal>
     </div>
   );
 };

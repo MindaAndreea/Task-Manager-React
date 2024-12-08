@@ -2,6 +2,12 @@
 
 :root {
   --main-color: #3754db;
+  --color-pending: #df9a00;
+  --color-inProgress: #3754db;
+  --color-inReview: #8937db;
+  --color-completed: #00c271;
+  --color-unassigned: #b80020;
+  --color-toDo: #808080;
 }
 
 body {

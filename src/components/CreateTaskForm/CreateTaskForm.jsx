@@ -36,15 +36,15 @@ const CreateTaskForm = (props) => {
     event.preventDefault();
     props.addTask(taskData);
     resetState();
+    if (props.closeModal) {
+      props.closeModal();
+    }
   };
 
   return (
     <div className="createTaskForm">
       <div className="title">
         <h2>Create Task</h2>
-        <div className="icon">
-          <FontAwesomeIcon icon={faXmark} className="closeIcon" />
-        </div>
       </div>
       <form onSubmit={handleSubmitForm}>
         <label htmlFor="taskName">Task Name</label>
