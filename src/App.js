@@ -1,9 +1,12 @@
 import ContainerBox from "./components/ContainerBox/ContainerBox";
+import { TaskProvider } from "./context/TaskContext";
 
 function App() {
   return (
     <div className="App">
-      <ContainerBox />
+      <TaskProvider>
+        <ContainerBox />
+      </TaskProvider>
     </div>
   );
 }

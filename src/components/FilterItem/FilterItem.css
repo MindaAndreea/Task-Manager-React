@@ -1,0 +1,16 @@
+.filter-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+span {
+  background-color: #f0f0f0;
+  color: #16171d;
+  font-weight: 700;
+  border-radius: 35%;
+  margin-left: 12px;
+  margin-right: 28px;
+  padding: 12px;
+  font-size: 12px;
+}

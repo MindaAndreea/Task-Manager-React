@@ -1,53 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./ContainerBox.css";
 import CreateTaskForm from "../CreateTaskForm/CreateTaskForm";
 import TaskCard from "../TaskCard/TaskCard";
 import NoTasks from "../NoTasks/NoTasks";
 import Modal from "../Modal/Modal";
 import ControlPanel from "../ControlPanel/ControlPanel";
+import { UsingTaskContext } from "../../context/TaskContext";
 
 const ContainerBox = () => {
-  const data = [
-    {
-      taskName: "task1",
-      taskDate: "12-12-2024",
-      taskDescription: "description 1",
-      taskStatus: "Pending",
-    },
-    {
-      taskName: "task2",
-      taskDate: "12-12-2024",
-      taskDescription: "description 2",
-      taskStatus: "In Progress",
-    },
-    {
-      taskName: "task3",
-      taskDate: "12-12-2024",
-      taskDescription: "description 3",
-      taskStatus: "In Review",
-    },
-    {
-      taskName: "task4",
-      taskDate: "12-12-2024",
-      taskDescription: "description 4",
-      taskStatus: "Completed",
-    },
-    {
-      taskName: "task5",
-      taskDate: "12-12-2024",
-      taskDescription: "description 5",
-      taskStatus: "Unassigned",
-    },
-    {
-      taskName: "task6",
-      taskDate: "12-12-2024",
-      taskDescription: "description 6",
-      taskStatus: "Todo",
-    },
-  ];
-
-  const [taskList, setTaskList] = useState(data);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const { taskList, setTaskList } = UsingTaskContext();
 
   const openModal = () => setIsModalOpen(true);
 
@@ -66,6 +29,10 @@ const ContainerBox = () => {
   };
 
   // console.log(taskList);
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(taskList));
+  }, [taskList]);
 
   return (
     <div className="container-box">

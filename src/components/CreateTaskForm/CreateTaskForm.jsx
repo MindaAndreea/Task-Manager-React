@@ -38,15 +38,26 @@ const CreateTaskForm = (props) => {
     if (!taskData.name) {
       errors.nameError = "Task name is required!";
     } else if (taskData.name.length < 3) {
-      errors.nameError = "Task name must have minimum 3 characters!";
+      errors.nameError = "Task name must have a minimum of 3 characters!";
+    } else if (taskData.name.length > 15) {
+      errors.descError =
+        "Task description must have a maximum of 15 characters!";
     }
 
     if (!taskData.date) {
       errors.dateError = "Task date is required!";
+    } else if (new Date(taskData.date) < new Date()) {
+      errors.dateError = "Task date should not be in the past!";
     }
 
     if (!taskData.desc) {
       errors.descError = "Task description is required!";
+    } else if (taskData.desc.length < 3) {
+      errors.descError =
+        "Task description must have a minimum of 3 characters!";
+    } else if (taskData.desc.length > 30) {
+      errors.descError =
+        "Task description must have a maximum of 30 characters!";
     }
 
     setFormErrors({ ...errors });
