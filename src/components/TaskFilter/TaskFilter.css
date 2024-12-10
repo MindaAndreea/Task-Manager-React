@@ -7,3 +7,61 @@
   color: #808080;
   margin-top: 20px;
 }
+
+.all-tasks {
+  border-bottom: 0.34px solid var(--color-toDo);
+}
+
+.pending {
+  color: var(--color-pending);
+  border-bottom: 0.34px solid var(--color-pending);
+}
+
+.pending:hover {
+  color: #b67c00;
+}
+
+.in-progress {
+  color: var(--color-inProgress);
+  border-bottom: 0.34px solid var(--color-inProgress);
+}
+
+.in-progress:hover {
+  color: #2744c1;
+}
+
+.in-review {
+  color: var(--color-inReview);
+  border-bottom: 0.34px solid var(--color-inReview);
+}
+
+.in-review:hover {
+  color: #7324c2;
+}
+
+.completed {
+  color: var(--color-completed);
+  border-bottom: 0.34px solid var(--color-completed);
+}
+
+.completed:hover {
+  color: #009456;
+}
+
+.unassigned {
+  color: var(--color-unassigned);
+  border-bottom: 0.34px solid var(--color-unassigned);
+}
+
+.unassigned:hover {
+  color: #830016;
+}
+
+.todo {
+  color: var(--color-toDo);
+  border-bottom: 0.34px solid var(--color-toDo);
+}
+
+.todo:hover {
+  color: #5e5e5e;
+}

@@ -4,13 +4,13 @@ import { UsingTaskContext } from "../../context/TaskContext";
 
 const TaskFilter = () => {
   const filterStatus = [
-    "All Tasks",
-    "Pending",
-    "In Progress",
-    "In Review",
-    "Completed",
-    "Unassigned",
-    "Todo",
+    { name: "All Tasks", colorClass: "all-tasks" },
+    { name: "Pending", colorClass: "pending" },
+    { name: "In Progress", colorClass: "in-progress" },
+    { name: "In Review", colorClass: "in-review" },
+    { name: "Completed", colorClass: "completed" },
+    { name: "Unassigned", colorClass: "unassigned" },
+    { name: "Todo", colorClass: "todo" },
   ];
 
   const { taskList, activeStatus, setActiveStatus } = UsingTaskContext();
@@ -28,12 +28,11 @@ const TaskFilter = () => {
       {filterStatus.map((item, index) => (
         <FilterItem
           key={index}
-          status={item}
-          count={getCountByStatus(item)}
-          isActive={activeStatus === item}
-          onStatusClick={() => {
-            setActiveStatus(item);
-          }}
+          status={item.name}
+          count={getCountByStatus(item.name)}
+          isActive={activeStatus === item.name}
+          onStatusClick={() => setActiveStatus(item.name)}
+          colorClass={item.colorClass}
         />
       ))}
     </div>
