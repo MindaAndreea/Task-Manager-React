@@ -3,9 +3,12 @@ import "./FilterItem.css";
 
 const FilterItem = (props) => {
   return (
-    <div className="filter-item">
+    <div
+      className={`filter-item ${props.isActive ? "active" : ""}`}
+      onClick={props.onStatusClick}
+    >
       {props.status}
-      <span>3</span>
+      <span>{props.count}</span>
     </div>
   );
 };

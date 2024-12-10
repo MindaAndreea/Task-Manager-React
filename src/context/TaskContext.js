@@ -47,8 +47,12 @@ export const TaskProvider = (props) => {
     return tasks ? JSON.parse(tasks) : data;
   });
 
+  const [activeStatus, setActiveStatus] = useState("All Tasks");
+
   return (
-    <TaskContext.Provider value={{ taskList, setTaskList }}>
+    <TaskContext.Provider
+      value={{ taskList, setTaskList, activeStatus, setActiveStatus }}
+    >
       {props.children}
     </TaskContext.Provider>
   );

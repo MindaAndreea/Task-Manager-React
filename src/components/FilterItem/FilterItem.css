@@ -2,6 +2,30 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 0.34px solid #a9a9a9;
+  font-weight: 700;
+  line-height: 19.25px;
+  letter-spacing: -0.02em;
+}
+
+.filter-item:hover {
+  cursor: pointer;
+  color: #5d5d5d;
+}
+
+.filter-item.active {
+  color: #3754db;
+  border-bottom: 0.34px solid #3754db;
+}
+
+.filter-item.active:hover {
+  color: #2845ca;
+}
+
+.filter-item.active span {
+  color: #3754db;
+  font-weight: bolder;
+  background-color: transparent;
 }
 
 span {
